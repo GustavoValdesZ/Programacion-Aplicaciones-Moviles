@@ -1,0 +1,78 @@
+.main-title {
+  font-size: 32px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+ion-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+}
+
+.login-card {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.input-item {
+  margin-bottom: 15px;
+}
+
+ion-input {
+  --background: rgba(255, 255, 255, 0.8);
+  --border-radius: 8px;
+  color: blue;
+}
+
+.login-button, .register-button {
+  margin-top: 10px;
+  background-color: blue;
+  color: white;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: red;
+}
+
+.slogan {
+  text-align: center;
+  font-size: 16px;
+  color: gray;
+  margin-top: 20px;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../../assets/images/gen2030_2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover; /* O prueba 'contain' */
+  background-position: center; /* Centra la imagen */
+  z-index: -1;
+}
