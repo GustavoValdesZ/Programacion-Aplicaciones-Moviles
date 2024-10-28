@@ -1,21 +1,21 @@
 .main-title {
   font-size: 28px;
   text-align: center;
-  margin: 20px 0;
+  margin: 0%;
   color: #50C878;
   font-weight: bold;
 }
 
 .logo {
   display: block;
-  margin: 0 auto 10px;
-  width: 100%;
-  height: auto;
-  max-height: none;
+  margin: 0 auto 10px; 
+  width: 90%; 
+  max-width: 400px; 
+  height: auto; 
   object-fit: contain;
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 0.5s;
+  opacity: 0; 
+  animation: fadeIn 1s forwards; 
+  animation-delay: 0.5s; 
 }
 
 ion-card-header {
@@ -68,7 +68,7 @@ ion-input {
   text-align: center;
   font-size: 16px;
   color: #50C878;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .background {
