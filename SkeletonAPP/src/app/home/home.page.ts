@@ -32,7 +32,12 @@ export class HomePage {
   async mostrar() {
     const alert = await this.alertCtrl.create({
       header: 'Información del Usuario',
-      message: `Nombre: ${this.nombre}<br>Apellido: ${this.apellido}`,
+      message: `
+        Nombre: ${this.nombre}
+        Apellido: ${this.apellido}
+        Nivel de Educación: ${this.nivelEducacion}
+        Fecha de Nacimiento: ${this.fechaNacimiento}
+      `,
       buttons: ['OK']
     });
     await alert.present();

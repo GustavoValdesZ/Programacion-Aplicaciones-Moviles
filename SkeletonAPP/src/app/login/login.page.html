@@ -19,12 +19,12 @@
     <ion-card-content>
       <ion-item class="input-item">
         <ion-label position="floating" color="primary">Usuario</ion-label>
-        <ion-input [(ngModel)]="usuario" type="usuario"></ion-input>
+        <ion-input [(ngModel)]="usuario" type="text"></ion-input>
       </ion-item>
 
       <ion-item class="input-item">
         <ion-label position="floating" color="primary">Contraseña</ion-label>
-        <ion-input [(ngModel)]="password"   type="password"></ion-input>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
       </ion-item>
 
       <ion-button expand="block" (click)="login()" class="login-button">Login</ion-button>

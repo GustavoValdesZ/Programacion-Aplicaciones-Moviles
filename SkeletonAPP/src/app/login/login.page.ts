@@ -10,17 +10,16 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   usuario: string = '';
   password: string = '';
-  passwordNumerica: string = '';
 
-  constructor(private navCTRL: NavController, private alertController: AlertController) { }
+  constructor(private navCTRL: NavController, private alertController: AlertController) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   async mostrarAlerta(mensaje: string) {
     const alert = await this.alertController.create({
       header: 'Error',
       message: mensaje,
-      buttons: ['OK']
+      buttons: ['OK'],
     });
     await alert.present();
   }
@@ -38,9 +37,8 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    // Validar la contraseña numérica
-    if (!this.validarPasswordNumerica(this.passwordNumerica)) {
-      this.mostrarAlerta('La contraseña numérica debe ser de 4 dígitos.');
+    if (!this.validarPassword(this.password)) {
+      this.mostrarAlerta('La contraseña debe ser de 4 dígitos numéricos.');
       return;
     }
 
@@ -49,7 +47,7 @@ export class LoginPage implements OnInit {
       queryParams: {
         usuario: this.usuario,
         password: this.password,
-      }
+      },
     });
   }
 
@@ -59,10 +57,9 @@ export class LoginPage implements OnInit {
     return pattern.test(usuario);
   }
 
-  // Método para validar la contraseña numérica
-  private validarPasswordNumerica(password: string): boolean {
-    const pattern = /^\d{4}$/;
+  // Método para validar la contraseña
+  private validarPassword(password: string): boolean {
+    const pattern = /^\d{4}$/; // Debe ser un número de 4 dígitos
     return pattern.test(password);
   }
 }
-
