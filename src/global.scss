@@ -52,6 +52,7 @@
 
 ion-menu {
     --background: #383636a4;
+    height: 100%;
   }
   
 ion-toolbar {
@@ -63,8 +64,25 @@ ion-menu-button {
   }
 
 .menu-item {
-  --background: #383636a4; /* Fondo específico para los elementos del menú */
-  color: #50C878; /* Color del texto */
-  height: 100%; /* Asegura que el ion-item ocupe toda la altura */
-  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+  --background: #383636a4;
+  color: #50C878;
+  height: 100%;
+  box-sizing: border-box;
 }
+
+ion-app, ion-content {
+  --background: radial-gradient(circle, white 0%, #383636a4 100%);
+  background-color: radial-gradient(circle, white 0%, #383636a4 100%);
+  height: 100%;
+}
+
+.menu-title {
+  color: #50C878;
+  font-size: 1.5rem;
+}
+
+//pude arreglar con un padding un espacio en blanco que se genero con el componente del header,
+//pero ahora trate y trate con el menu desplegado hay un espacio en blanco y no lo pude arreglar
+//probe envolviendo el menu asi <div class="menu-list-container"> y luego dandole estilo al menu-list-container
+//con un padding, margenes, etc y el padding por ejemplo se aplicaba pero el espacio en blanco
+//no se iba
