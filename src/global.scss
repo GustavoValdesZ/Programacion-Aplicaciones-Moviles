@@ -81,8 +81,41 @@ ion-app, ion-content {
   font-size: 1.5rem;
 }
 
+/* Estilo para los iconos en los elementos del menú */
+.menu-item ion-icon {
+  color: #50C878; /* Color verde para los iconos del menú */
+}
+
+/* Si quieres que los iconos se vean más grandes */
+.menu-item ion-icon {
+  font-size: 1.5em; /* Ajusta el tamaño según tus preferencias */
+}
+
+/* Estilo para el texto del menú (si lo deseas) */
+.menu-item {
+  color: #50C878; /* Color para el texto en los ítems del menú */
+}
+
 //pude arreglar con un padding un espacio en blanco que se genero con el componente del header,
 //pero ahora trate y trate con el menu desplegado hay un espacio en blanco y no lo pude arreglar
 //probe envolviendo el menu asi <div class="menu-list-container"> y luego dandole estilo al menu-list-container
 //con un padding, margenes, etc y el padding por ejemplo se aplicaba pero el espacio en blanco
-//no se iba
+//no se iba, probe tambien como lo hizo en la sincronica con eso del borde transparente y nada
+
+ion-tab-bar {
+  --background: #383636a4;  /* Fondo gris */
+  --color: #50C878;  /* Color de los iconos (estado no seleccionado) */
+  --color-selected: #50C878;  /* Color verde para los iconos cuando están seleccionados */
+}
+
+/* Estilo específico para los iconos en la barra de pestañas */
+ion-tab-bar ion-tab-button ion-icon {
+  color: inherit;  /* Hereda el color configurado para el icono */
+  transform: scale(1.5); 
+}
+
+
+/* Estilo para los iconos seleccionados */
+ion-tab-bar ion-tab-button[aria-selected="true"] ion-icon {
+  color: #50C878;  /* Color verde cuando el icono está seleccionado */
+}
