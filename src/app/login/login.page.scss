@@ -1,7 +1,21 @@
 .main-title {
-  font-size: 32px;
+  font-size: 28px;
   text-align: center;
-  margin: 20px 0;
+  margin: 0%;
+  color: #50C878;
+  font-weight: bold;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 10px; 
+  width: 90%; 
+  max-width: 400px; 
+  height: auto; 
+  object-fit: contain;
+  opacity: 0; 
+  animation: fadeIn 1s forwards; 
+  animation-delay: 0.5s; 
 }
 
 ion-card-header {
@@ -11,27 +25,20 @@ ion-card-header {
   width: 100%; 
 }
 
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  backdrop-filter: blur(5px);
-}
-
 .login-card {
   width: 90%;
   max-width: 400px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
 .login-title {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+  margin: 10px 0;
 }
 
 .input-item {
@@ -60,8 +67,8 @@ ion-input {
 .slogan {
   text-align: center;
   font-size: 16px;
-  color: gray;
-  margin-top: 20px;
+  color: #50C878;
+  margin-bottom: 20px;
 }
 
 .background {
@@ -72,7 +79,13 @@ ion-input {
   bottom: 0;
   background-image: url('../../assets/images/gen2030_2.jpg');
   background-repeat: no-repeat;
-  background-size: cover; /* O prueba 'contain' */
-  background-position: center; /* Centra la imagen */
+  background-size: cover;
+  background-position: center;
   z-index: -1;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }

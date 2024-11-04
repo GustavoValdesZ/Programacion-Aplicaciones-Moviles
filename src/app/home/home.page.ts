@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,38 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  usuario: string = '';
+  nombre: string = '';
+  apellido: string = '';
+  nivelEducacion: string = '';
+  fechaNacimiento: string = '';
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private alertCtrl: AlertController) {}
 
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.usuario = params['usuario'];
+    });
+  }
+
+  limpiar() {
+    this.nombre = '';
+    this.apellido = '';
+    this.nivelEducacion = '';
+    this.fechaNacimiento = '';
+  }
+
+  async mostrar() {
+    const alert = await this.alertCtrl.create({
+      header: 'Información del Usuario',
+      message: `
+        Nombre: ${this.nombre}
+        Apellido: ${this.apellido}
+        Nivel de Educación: ${this.nivelEducacion}
+        Fecha de Nacimiento: ${this.fechaNacimiento}
+      `,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 }
