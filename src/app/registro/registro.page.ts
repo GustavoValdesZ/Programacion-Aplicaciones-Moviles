@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-registro',
@@ -16,7 +16,10 @@ export class RegistroPage {
     fechaNacimiento: ''
   };
 
-  constructor(private alertCtrl: AlertController) {}
+  constructor(private alertCtrl: AlertController, private menu: MenuController) {
+    // Cierra el menú al inicializar el componente
+    this.menu.close('myMenu');
+  }
 
   async onSubmit() {
     // Validar el nombre
@@ -43,9 +46,9 @@ export class RegistroPage {
       return;
     }
 
-    //validar nivel educ
+    // Validar nivel de educación
     if (!this.registro.nivelEducacion) {
-      this.mostrarAlerta('La fecha de nacimiento no puede estar vacía.');
+      this.mostrarAlerta('El nivel de educación no puede estar vacío.');
       return;
     }
 

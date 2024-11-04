@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,15 @@ export class LoginPage implements OnInit {
   usuario: string = '';
   password: string = '';
 
-  constructor(private navCTRL: NavController, private alertController: AlertController) {}
+  constructor(
+    private navCTRL: NavController,
+    private alertController: AlertController,
+    private menu: MenuController
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menu.close(); // Cierra el menú al inicializar la página
+  }
 
   async mostrarAlerta(mensaje: string) {
     const alert = await this.alertController.create({
@@ -42,6 +49,8 @@ export class LoginPage implements OnInit {
       return;
     }
 
+    this.menu.close(); // Cierra el menú antes de navegar
+
     // Si las validaciones son exitosas, navegar a la página de inicio
     this.navCTRL.navigateForward(['/home'], {
       queryParams: {
@@ -51,13 +60,17 @@ export class LoginPage implements OnInit {
     });
   }
 
-  // Método para validar el usuario
+  // Método para ir a la página de registro
+  irARegistro() {
+    this.menu.close(); // Cierra el menú al ir a registro
+    this.navCTRL.navigateForward('/registro');
+  }
+
   private validarUsuario(usuario: string): boolean {
     const pattern = /^[a-zA-Z0-9]{3,8}$/;
     return pattern.test(usuario);
   }
 
-  // Método para validar la contraseña
   private validarPassword(password: string): boolean {
     const pattern = /^\d{4}$/; // Debe ser un número de 4 dígitos
     return pattern.test(password);

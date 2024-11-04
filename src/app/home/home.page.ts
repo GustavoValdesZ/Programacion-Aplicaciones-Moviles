@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,10 @@ export class HomePage {
   nivelEducacion: string = '';
   fechaNacimiento: string = '';
 
-  constructor(private route: ActivatedRoute, private alertCtrl: AlertController) {}
+  constructor(private route: ActivatedRoute, private alertCtrl: AlertController, private menu: MenuController) {
+    // Cierra el menú al inicializar el componente
+    this.menu.close('myMenu');
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
