@@ -1,0 +1,23 @@
+.app-header {
+    display: flex;
+    align-items: center; /* Alinear verticalmente el logo y el texto */
+    background-color: #383636a4; /* Fondo gris claro */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  .app-logo {
+    width: 40px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción */
+    margin-right: 8px; /* Espacio entre la imagen y el texto */
+  }
+  
+  .app-name {
+    color: #50C878; /* Color verde deseado */
+    font-weight: bold;
+    font-size: 1.2em; /* Ajusta el tamaño del texto */
+    line-height: 1; /* Asegúrate de que el texto no tenga espacio adicional */
+    margin: 0; /* Elimina el margen por defecto */
+    display: flex; /* Para usar flexbox */
+    align-items: center; /* Alinear verticalmente el texto */
+  }
+  
