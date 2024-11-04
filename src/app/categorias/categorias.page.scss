@@ -1,0 +1,45 @@
+.categorias-background {
+    background: radial-gradient(circle, white 0%, #383636a4 100%) !important;
+    color: #50C878 !important;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.categorias-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.categoria-item {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.categoria-label {
+    color: #50C878;
+    margin-left: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.categoria-nombre h3 {
+    font-size: 25px !important; /* Tamaño de letra más pequeño */
+    margin: 0; /* Elimina márgenes */
+    font-weight: bolder;
+}
+
+.categoria-thumbnail {
+    margin-right: 10px; /* Espacio entre imagen y texto */
+}
+
+.categoria-imagen {
+    width: 80px; /* Tamaño de la imagen */
+    height: 80px; /* Tamaño de la imagen */
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+}

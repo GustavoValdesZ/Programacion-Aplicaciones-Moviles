@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Categorías</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="categorias-background">
+  <ul class="categorias-list">
+    <li *ngFor="let categoria of categorias" class="categoria-item">
+      <div class="categoria-thumbnail">
+        <img class="categoria-imagen" [src]="categoria.imagen" alt="{{ categoria.nombre }}">
+      </div>
+      <div class="categoria-label">
+        <div class="categoria-nombre">
+          <h3>{{ categoria.nombre }}</h3>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
