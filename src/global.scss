@@ -61,3 +61,10 @@ ion-toolbar {
 ion-menu-button {
     color: #50C878;
   }
+
+.menu-item {
+  --background: #383636a4; /* Fondo específico para los elementos del menú */
+  color: #50C878; /* Color del texto */
+  height: 100%; /* Asegura que el ion-item ocupe toda la altura */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
