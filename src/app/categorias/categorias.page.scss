@@ -39,7 +39,39 @@
 }
 
 .categoria-imagen {
-    width: 80px; /* Tamaño de la imagen */
-    height: 80px; /* Tamaño de la imagen */
-    object-fit: cover; /* Mantiene la proporción de la imagen */
+    width: 80px;
+    height: 80px; 
+    object-fit: cover;
+    animation: fade 2s infinite alternate; 
+}
+
+/* Definición de la animación */
+@keyframes fade {
+    0% {
+        opacity: 1; /* Opacidad normal */
+    }
+    100% {
+        opacity: 0.5; /* Opacidad difuminada */
+    }
+}
+
+/* Animaciones escalonadas */
+.categoria-item:nth-child(1) .categoria-imagen {
+    animation-delay: 0s;
+}
+
+.categoria-item:nth-child(2) .categoria-imagen {
+    animation-delay: 0.3s;
+}
+
+.categoria-item:nth-child(3) .categoria-imagen {
+    animation-delay: 0.6s;
+}
+
+.categoria-item:nth-child(4) .categoria-imagen {
+    animation-delay: 0.9s;
+}
+
+.categoria-item:nth-child(5) .categoria-imagen {
+    animation-delay: 1.2s;
 }
