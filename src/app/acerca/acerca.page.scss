@@ -1,3 +1,15 @@
+@keyframes fadeInOut {
+    0% {
+      opacity: 0; /* Comienza invisible */
+    }
+    50% {
+      opacity: 1; /* Se vuelve completamente visible */
+    }
+    100% {
+      opacity: 0; /* Vuelve a ser invisible */
+    }
+}
+
 .acerca-background {
     display: flex;
     flex-direction: column;
@@ -10,6 +22,7 @@
 
 .acerca-container {
     text-align: center; /* Centra todo el contenido dentro del contenedor */
+    margin: 0 20px; /* Márgenes a los lados */
 }
 
 .tienda-imagen {
@@ -20,6 +33,7 @@
     margin-bottom: 20px;
     margin-left: 0px;
     margin-right: 0px;
+    animation: fadeInOut 4s ease-in-out infinite; /* Animación de desvanecimiento */
 }
 
 .descripcion {
@@ -27,7 +41,7 @@
 }
 
 .descripcion h2 {
-    font-size: 24px; /* Tamaño del título */
+    font-size: 30px; /* Tamaño del título */
     margin-bottom: 10px; /* Espacio debajo del título */
     font-weight: bolder;
 }

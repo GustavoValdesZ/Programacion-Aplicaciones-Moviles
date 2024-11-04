@@ -1,0 +1,50 @@
+@keyframes fadeInOut {
+    0% {
+      opacity: 0; /* Comienza invisible */
+    }
+    50% {
+      opacity: 1; /* Se vuelve completamente visible */
+    }
+    100% {
+      opacity: 0; /* Vuelve a ser invisible */
+    }
+  }
+  
+  #form-container {
+    display: flex;
+    flex-direction: column; /* Para alinear el título y el formulario en columna */
+    justify-content: flex-start; /* Cambiado para que empiece desde la parte superior */
+    align-items: center; /* Centrar horizontalmente */
+    height: calc(100vh - 56px); /* Ajusta para que no cubra el header */
+    padding: 0 20px; /* Espacio horizontal */
+  }
+  
+  .main-title {
+    font-size: 28px; /* Tamaño de la fuente */
+    color: #50C878; /* Color verde */
+    text-align: center; /* Centrar el texto */
+    margin-top: 10px; /* Añadir un poco de margen arriba para separar del borde */
+    margin-bottom: 10px; /* Espacio debajo del título */
+    font-weight: bolder;
+    animation: fadeInOut 2s ease-in-out infinite; /* Aplicar la animación */
+  }
+  
+  form {
+    background-color: #383636a4; /* Fondo gris oscuro */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Ajusta para que tome todo el ancho */
+    max-width: 400px; /* Máximo ancho del formulario */
+  }
+  
+  ion-item {
+    --background: transparent; /* Fondo transparente para los inputs */
+    --color: #50C878; /* Color del texto */
+  }
+  
+  ion-input {
+    --color: #50C878; /* Color del texto de entrada */
+    background: transparent; /* Fondo transparente para el input */
+  }
+  

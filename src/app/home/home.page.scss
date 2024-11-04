@@ -2,7 +2,7 @@
   font-size: 28px;
   text-align: center;
   margin: 0;
-  color: #50C878;
+  color: #50C878; /* Color verde */
   font-weight: bolder;
 }
 
@@ -11,6 +11,7 @@
   font-weight: bold;
   text-align: center;
   margin: 10px 0;
+  color: #50C878; /* Color verde para "Información Adicional" */
 }
 
 #container {
@@ -19,7 +20,7 @@
 }
 
 .info-card {
-  background-color: white;
+  background-color: #383636a4; /* Fondo gris oscuro con transparencia */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   padding: 20px; 
@@ -27,13 +28,28 @@
   max-width: 400px;
 }
 
+ion-item {
+  --background: #383636a4; /* Fondo gris oscuro con transparencia para los inputs */
+  --color: #50C878; /* Color del texto */
+}
+
+ion-input {
+  --color: #50C878; /* Color del texto de entrada */
+  background: transparent; /* Fondo transparente para el input */
+}
+
+ion-input::part(native) {
+  background-color: #383636a4; /* Fondo gris oscuro con transparencia para el input */
+  color: #50C878; /* Color del texto de entrada */
+}
+
 ion-button.boton-limpiar {
-  background-color: red !important; /* esto no se aplicó, ni idea porque */
+  background-color: red !important; /* Color de fondo para botón de limpiar */
   color: white !important;
 }
 
 ion-button.boton-mostrar {
-  background-color: blue !important;
+  background-color: blue !important; /* Color de fondo para botón de mostrar */
   color: white !important;
 }
 
