@@ -10,16 +10,20 @@
 
     <div class="juegos-list">
       <div class="juego">
-        <h3 class="juego-nombre">EA Sports FC 25</h3>
-        <img src="assets/images/ea-fc-25.jpg" alt="EA FC 25" class="juego-imagen">
+        <a [routerLink]="['/eafc25']">
+          <h3 class="juego-nombre">EA Sports FC 25</h3>
+          <img src="assets/images/ea-fc-25.jpg" alt="EA FC 25" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
           El sucesor de FIFA con mejoras en jugabilidad, gráficos y modos de juego innovadores.
         </p>
       </div>
 
       <div class="juego">
-        <h3 class="juego-nombre">NBA 2K25</h3>
-        <img src="assets/images/nba-2k25.jpg" alt="NBA 2K25" class="juego-imagen">
+        <a [routerLink]="['/nba2k25']">
+          <h3 class="juego-nombre">NBA 2K25</h3>
+          <img src="assets/images/nba-2k25.jpg" alt="NBA 2K25" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
           Vive la experiencia del baloncesto con gráficos de última generación y una jugabilidad envolvente.
         </p>

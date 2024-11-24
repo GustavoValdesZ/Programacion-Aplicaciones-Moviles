@@ -63,6 +63,33 @@ const routes: Routes = [
     path: 'sackboy',
     loadChildren: () => import('./categorias/aventura/sackboy/sackboy.module').then( m => m.SackboyPageModule)
   },
+  {
+    path: 'eafc25',
+    loadChildren: () => import('./categorias/deportes/eafc25/eafc25.module').then( m => m.Eafc25PageModule)
+  },
+  {
+    path: 'nba2k25',
+    loadChildren: () => import('./categorias/deportes/nba2k25/nba2k25.module').then( m => m.Nba2k25PageModule)
+  },
+  {
+    path: 'cod',
+    loadChildren: () => import('./categorias/shooter/cod/cod.module').then( m => m.CodPageModule)
+  },
+  {
+    path: 'halo',
+    loadChildren: () => import('./categorias/shooter/halo/halo.module').then( m => m.HaloPageModule)
+  },
+  {
+    path: 'residentevil',
+    loadChildren: () => import('./categorias/terror/residentevil/residentevil.module').then( m => m.ResidentevilPageModule)
+  },
+  {
+    path: 'stillwakes',
+    loadChildren: () => import('./categorias/terror/stillwakes/stillwakes.module').then( m => m.StillwakesPageModule)
+  },
+
+
+
 
 
 

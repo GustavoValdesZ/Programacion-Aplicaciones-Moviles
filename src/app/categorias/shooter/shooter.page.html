@@ -10,16 +10,20 @@
 
     <div class="juegos-list">
       <div class="juego">
-        <h3 class="juego-nombre">COD Black Ops 6</h3>
-        <img src="assets/images/cod.jpg" alt="COD Black Ops 6" class="juego-imagen">
+        <a [routerLink]="['/cod']">
+          <h3 class="juego-nombre">COD Black Ops 6</h3>
+          <img src="assets/images/cod.jpg" alt="COD Black Ops 6" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
           La última entrega de la saga Call of Duty con intensos combates y una emocionante historia.
         </p>
       </div>
 
       <div class="juego">
-        <h3 class="juego-nombre">Halo Infinite</h3>
-        <img src="assets/images/halo.jpg" alt="Halo Infinite" class="juego-imagen">
+        <a [routerLink]="['/halo']">
+          <h3 class="juego-nombre">Halo Infinite</h3>
+          <img src="assets/images/halo.jpg" alt="Halo Infinite" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
           Únete al Jefe Maestro en su misión más grande hasta ahora, con un mundo abierto lleno de acción.
         </p>

@@ -10,18 +10,22 @@
 
     <div class="juegos-list">
       <div class="juego">
-        <h3 class="juego-nombre">Resident Evil Village</h3>
-        <img src="assets/images/resident-evil-village.jpg" alt="Resident Evil Village" class="juego-imagen">
+        <a [routerLink]="['/residentevil']">
+          <h3 class="juego-nombre">Resident Evil Village</h3>
+          <img src="assets/images/resident-evil-village.jpg" alt="Resident Evil Village" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
-          Una aterradora experiencia en un misterioso pueblo lleno de criaturas y horrores indescriptibles.
+          Enfréntate a monstruos aterradores y descubre los horrores que acechan en un pueblo aislado.
         </p>
       </div>
 
       <div class="juego">
-        <h3 class="juego-nombre">Still Wakes the Deep</h3>
-        <img src="assets/images/still-wakes-the-deep.jpg" alt="Still Wakes the Deep" class="juego-imagen">
+        <a [routerLink]="['/stillwakes']">
+          <h3 class="juego-nombre">Still Wakes the Deep</h3>
+          <img src="assets/images/still-wakes-the-deep.jpg" alt="Still Wakes the Deep" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
-          Un juego de terror psicológico ambientado en una plataforma petrolera, donde cada paso puede ser el último.
+          Una experiencia de horror psicológico ambientada en una plataforma petrolera en el mar del norte.
         </p>
       </div>
     </div>
