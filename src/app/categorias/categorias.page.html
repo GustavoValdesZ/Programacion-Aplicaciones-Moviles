@@ -6,7 +6,7 @@
 
 <div class="categorias-background">
   <ul class="categorias-list">
-    <li *ngFor="let categoria of categorias" class="categoria-item">
+    <li *ngFor="let categoria of categorias" class="categoria-item" [routerLink]="['/'+categoria.nombre.toLowerCase()]">
       <div class="categoria-thumbnail">
         <img class="categoria-imagen" [src]="categoria.imagen" alt="{{ categoria.nombre }}">
       </div>

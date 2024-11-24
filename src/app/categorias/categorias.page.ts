@@ -8,7 +8,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class CategoriasPage implements OnInit {
   categorias = [
-    { nombre: 'Acción', imagen: 'assets/images/accion.jpg' },
+    { nombre: 'Accion', imagen: 'assets/images/accion.jpg' },
     { nombre: 'Aventura', imagen: 'assets/images/aventura.jpg' },
     { nombre: 'Deportes', imagen: 'assets/images/deportes.jpg' },
     { nombre: 'Shooter', imagen: 'assets/images/shooter.jpg' },

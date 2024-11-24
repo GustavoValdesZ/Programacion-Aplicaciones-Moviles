@@ -75,3 +75,10 @@
 .categoria-item:nth-child(5) .categoria-imagen {
     animation-delay: 1.2s;
 }
+
+/* Asegura que los enlaces no tengan color azul ni estén subrayados */
+a {
+    color: inherit; /* Hereda el color del contenedor */
+    text-decoration: none; /* Elimina el subrayado */
+  }
+  

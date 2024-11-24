@@ -8,30 +8,30 @@
 
 .logo {
   display: block;
-  margin: 0 auto 10px; 
-  width: 90%; 
-  max-width: 400px; 
-  height: auto; 
+  margin: 0 auto 10px;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
   object-fit: contain;
-  opacity: 0; 
-  animation: fadeIn 1s forwards; 
-  animation-delay: 0.5s; 
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 0.5s;
 }
 
 ion-card-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .login-card {
-  width: 90%;
-  max-width: 400px;
+  background-color: #383636a4; /* Fondo gris oscuro con transparencia */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   margin: 20px auto;
-  padding: 10px;
+  padding: 20px;  /* Aumenta el padding para mayor espacio */
+  max-width: 400px; /* Limita el ancho de la caja */
 }
 
 .login-title {
@@ -39,17 +39,26 @@ ion-card-header {
   font-weight: bolder;
   text-align: center;
   margin: 10px 0;
+  color: #50C878; /* Color verde para el título */
 }
 
 .input-item {
   margin-bottom: 15px;
 }
 
+ion-item {
+  --background: #383636a4; /* Fondo gris oscuro con transparencia para los inputs */
+  --color: #50C878; /* Color del texto de los inputs */
+}
+
 ion-input {
-  --background: rgba(255, 255, 255, 0.8);
-  --border-radius: 8px;
-  color: #50C878;
-  font-weight: bold;
+  --color: #50C878; /* Color del texto de entrada */
+  background: transparent; /* Fondo transparente para el input */
+}
+
+ion-input::part(native) {
+  background-color: #383636a4; /* Fondo gris oscuro con transparencia para el input */
+  color: #50C878; /* Color del texto de entrada */
 }
 
 .login-button, .register-button {

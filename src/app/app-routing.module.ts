@@ -27,6 +27,28 @@ const routes: Routes = [
     path: 'acerca',
     loadChildren: () => import('./acerca/acerca.module').then( m => m.AcercaPageModule)
   },
+  {
+    path: 'aventura',
+    loadChildren: () => import('./aventura/aventura.module').then( m => m.AventuraPageModule)
+  },
+  {
+    path: 'deportes',
+    loadChildren: () => import('./deportes/deportes.module').then( m => m.DeportesPageModule)
+  },
+  {
+    path: 'shooter',
+    loadChildren: () => import('./shooter/shooter.module').then( m => m.ShooterPageModule)
+  },
+  {
+    path: 'terror',
+    loadChildren: () => import('./terror/terror.module').then( m => m.TerrorPageModule)
+  },  {
+    path: 'accion',
+    loadChildren: () => import('./accion/accion.module').then( m => m.AccionPageModule)
+  },
+
+
+
 
 ];
 
