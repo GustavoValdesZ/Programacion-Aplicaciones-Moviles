@@ -29,26 +29,24 @@ const routes: Routes = [
   },
   {
     path: 'aventura',
-    loadChildren: () => import('./aventura/aventura.module').then( m => m.AventuraPageModule)
+    loadChildren: () => import('./categorias/aventura/aventura.module').then( m => m.AventuraPageModule)
   },
   {
     path: 'deportes',
-    loadChildren: () => import('./deportes/deportes.module').then( m => m.DeportesPageModule)
+    loadChildren: () => import('./categorias/deportes/deportes.module').then( m => m.DeportesPageModule)
   },
   {
     path: 'shooter',
-    loadChildren: () => import('./shooter/shooter.module').then( m => m.ShooterPageModule)
+    loadChildren: () => import('./categorias/shooter/shooter.module').then( m => m.ShooterPageModule)
   },
   {
     path: 'terror',
-    loadChildren: () => import('./terror/terror.module').then( m => m.TerrorPageModule)
-  },  {
-    path: 'accion',
-    loadChildren: () => import('./accion/accion.module').then( m => m.AccionPageModule)
+    loadChildren: () => import('./categorias/terror/terror.module').then( m => m.TerrorPageModule)
   },
-
-
-
+  {
+    path: 'accion',
+    loadChildren: () => import('./categorias/accion/accion.module').then( m => m.AccionPageModule)
+  },
 
 ];
 
