@@ -47,6 +47,25 @@ const routes: Routes = [
     path: 'accion',
     loadChildren: () => import('./categorias/accion/accion.module').then( m => m.AccionPageModule)
   },
+  {
+    path: 'god-of-war',
+    loadChildren: () => import('./categorias/accion/god-of-war/god-of-war.module').then( m => m.GodOfWarPageModule)
+  },
+  {
+    path: 'wukong',
+    loadChildren: () => import('./categorias/accion/wukong/wukong.module').then( m => m.WukongPageModule)
+  },
+  {
+    path: 'hogwarts',
+    loadChildren: () => import('./categorias/aventura/hogwarts/hogwarts.module').then( m => m.HogwartsPageModule)
+  },
+  {
+    path: 'sackboy',
+    loadChildren: () => import('./categorias/aventura/sackboy/sackboy.module').then( m => m.SackboyPageModule)
+  },
+
+
+
 
 ];
 

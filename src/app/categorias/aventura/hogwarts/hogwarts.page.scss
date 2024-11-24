@@ -1,0 +1,52 @@
+.main-title {
+    font-size: 28px;
+    text-align: center;
+    margin: 0;
+    color: #50C878; /* Color verde */
+    font-weight: bolder;
+}
+
+.hogwarts-container {
+  margin-top: 20px; /* Añadir un margen superior al contenedor principal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+.hogwarts-title {
+  margin-top: 30px; /* Margen superior específico para el título */
+}
+
+.juego-imagen-container {
+  margin-top: 20px; /* Margen superior para la imagen */
+}
+
+.juego-imagen {
+  width: 300px; /* Tamaño personalizado para la imagen */
+  height: auto; /* Mantiene proporción */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+
+.juego-descripcion {
+  font-size: 14px;
+  text-align: center;
+  color: #50C878; /* Color verde */
+  font-weight: bolder;
+  margin-top: 20px; /* Espacio superior para la descripción */
+}
+
+.boton-volver {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+ion-button {
+  font-size: 16px;
+  padding: 10px 20px;
+  color: #ffffff; /* Texto blanco */
+  --background: #50C878; /* Fondo verde */
+  --background-hover: #45b068; /* Fondo verde oscuro al pasar el ratón */
+}

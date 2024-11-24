@@ -1,7 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-    </ion-title>
+    <ion-title>Acción</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,25 +10,29 @@
   <div id="container">
     <h2 class="main-title">Acción</h2>
 
-
     <div class="juegos-list">
-
+      
       <div class="juego">
-        <h3 class="juego-nombre">God of War Ragnarok</h3>
-        <img src="assets/images/god-of-war-ragnarok.jpg" alt="God of War Ragnarok" class="juego-imagen">
+        <a [routerLink]="['/god-of-war']">
+          <h3 class="juego-nombre">God of War Ragnarok</h3>
+          <img src="assets/images/god-of-war-ragnarok.jpg" alt="God of War Ragnarok" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
           Un épico juego de acción y aventura basado en la mitología nórdica.
         </p>
       </div>
 
       <div class="juego">
-        <h3 class="juego-nombre">Black Myth Wukong</h3>
-        <img src="assets/images/black-myth-wukong.jpg" alt="Black Myth Wukong" class="juego-imagen">
+        <a [routerLink]="['/wukong']">
+          <h3 class="juego-nombre">Black Myth Wukong</h3>
+          <img src="assets/images/black-myth-wukong.jpg" alt="Black Myth Wukong" class="juego-imagen">
+        </a>
         <p class="juego-descripcion">
           Un impresionante juego inspirado en la leyenda del Rey Mono.
         </p>
       </div>
     </div>
+
     <div class="boton-volver">
       <ion-button expand="block" color="primary" routerLink="/categorias">
         Categorías
