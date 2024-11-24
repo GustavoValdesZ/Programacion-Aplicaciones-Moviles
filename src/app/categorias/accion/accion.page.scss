@@ -1,0 +1,50 @@
+.main-title {
+    font-size: 28px;
+    text-align: center;
+    margin: 0;
+    color: #50C878; /* Color verde */
+    font-weight: bolder;
+  }
+
+  .juegos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre los juegos */
+    margin-top: 20px;
+  }
+  
+  .juego {
+    display: flex;
+    flex-direction: column; /* Imagen y texto apilados */
+    align-items: flex-start;
+  }
+  
+  .juego-nombre {
+    font-size: 20px;
+    font-weight: bold;
+    color: #50C878;
+    margin-bottom: 10px;
+  }
+  
+  .juego-imagen {
+    width: 200px; /* Tamaño personalizado para la imagen */
+    height: auto; /* Mantiene proporción */
+    margin-bottom: 10px;
+  }
+  
+  .juego-descripcion {
+    font-size: 14px;
+    color: #50C878;
+    font-weight: bolder;
+  }
+  
+  .boton-volver {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  ion-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }

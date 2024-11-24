@@ -1,10 +1,39 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Aventura</ion-title>
+    <ion-title>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>Bienvenido a la categoría Aventura</h1>
-  <!-- Agregar contenido relacionado a la categoría Aventura -->
+<ion-content class="ion-padding">
+  <div class="background"></div>
+  
+  <div id="container">
+    <h2 class="main-title">Aventura</h2>
+
+    <div class="juegos-list">
+
+      <div class="juego">
+        <h3 class="juego-nombre">Hogwarts Legacy</h3>
+        <img src="assets/images/hogwarts-legacy.jpg" alt="Hogwarts Legacy" class="juego-imagen">
+        <p class="juego-descripcion">
+          Sumérgete en el mundo mágico de Hogwarts y vive tu propia aventura como estudiante en el famoso colegio de magia.
+        </p>
+      </div>
+
+      <div class="juego">
+        <h3 class="juego-nombre">Sackboy: A Big Adventure</h3>
+        <img src="assets/images/sackboy.jpg" alt="Sackboy: A Big Adventure" class="juego-imagen">
+        <p class="juego-descripcion">
+          Acompaña a Sackboy en una emocionante y divertida aventura llena de desafíos y creatividad.
+        </p>
+      </div>
+    </div>
+
+    <div class="boton-volver">
+      <ion-button expand="block" color="primary" routerLink="/categorias">
+        Categorías
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
