@@ -1,11 +1,21 @@
-.main-title {
+.accion-background {
+    background: radial-gradient(circle, white 0%, #383636a4 100%) !important;
+    color: #50C878 !important;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  
+  .main-title {
     font-size: 28px;
     text-align: center;
     margin: 0;
     color: #50C878; /* Color verde */
     font-weight: bolder;
   }
-
+  
   .juegos-list {
     display: flex;
     flex-direction: column;
@@ -48,3 +58,4 @@
     font-size: 16px;
     padding: 10px 20px;
   }
+  
