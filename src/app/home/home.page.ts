@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 
@@ -7,22 +7,25 @@ import { AlertController, MenuController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   usuario: string = '';
   nombre: string = '';
   apellido: string = '';
   nivelEducacion: string = '';
   fechaNacimiento: string = '';
 
-  constructor(private route: ActivatedRoute, private alertCtrl: AlertController, private menu: MenuController) {
+  constructor(
+    private route: ActivatedRoute,
+    private alertCtrl: AlertController,
+    private menu: MenuController
+  ) {
     // Cierra el menú al inicializar el componente
     this.menu.close('myMenu');
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.usuario = params['usuario'];
-    });
+    // Asegúrate de que el usuario esté definido
+    this.usuario = localStorage.getItem('usuario') || 'Invitado';
   }
 
   limpiar() {
@@ -44,5 +47,16 @@ export class HomePage {
       buttons: ['OK']
     });
     await alert.present();
+  }
+
+  // Método de cerrar sesión
+  cerrarSesion() {
+    localStorage.removeItem('usuario');  // Elimina el usuario del localStorage
+    this.menu.close();  // Cierra el menú
+    this.alertCtrl.create({
+      header: 'Sesión cerrada',
+      message: 'Has cerrado sesión correctamente.',
+      buttons: ['OK']
+    }).then(alert => alert.present());
   }
 }

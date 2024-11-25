@@ -12,8 +12,9 @@ export class AppComponent {
 
   cerrarSesion() {
     console.log('Sesión Cerrada');
-    this.menu.close('MyMenu');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('usuario');  // Elimina el usuario del localStorage
+    this.menu.close('MyMenu');  // Cierra el menú
+    this.router.navigate(['/login']);  // Redirige a la página de login
   }
 
   // Métodos para navegar a las diferentes páginas

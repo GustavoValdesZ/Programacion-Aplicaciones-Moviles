@@ -56,13 +56,12 @@ export class LoginPage implements OnInit {
       const loginExitoso = await this.authService.loginUser(this.usuario, this.contrasena);
 
       if (loginExitoso) {
+        // Guarda los datos en el localStorage
+        localStorage.setItem('usuario', this.usuario);
+
         // Navegar a la página de inicio si el login es exitoso
         this.menu.close();
-        this.navCTRL.navigateForward(['/home'], {
-          queryParams: {
-            usuario: this.usuario,
-          },
-        });
+        this.navCTRL.navigateForward(['/home']);
       } else {
         this.mostrarAlerta('Usuario o contraseña incorrectos.');
       }
