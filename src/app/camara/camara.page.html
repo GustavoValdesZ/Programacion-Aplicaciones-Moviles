@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Queremos Conocerte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-button expand="full" (click)="takePicture()">
+    Capturar Imagen
+  </ion-button>
+
+  <div *ngIf="capturedImage" class="image-container">
+    <img [src]="capturedImage" alt="Imagen Capturada" class="captured-image" />
+  </div>
+</ion-content>

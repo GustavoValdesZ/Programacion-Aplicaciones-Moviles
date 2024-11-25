@@ -90,6 +90,14 @@ const routes: Routes = [
     path: 'personajes',
     loadChildren: () => import('./personajes/personajes.module').then( m => m.PersonajesPageModule)
   },
+  {
+    path: 'camara',
+    loadChildren: () => import('./camara/camara.module').then( m => m.CamaraPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+  },
 
 
 
