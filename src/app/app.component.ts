@@ -10,23 +10,15 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private menu: MenuController, private router: Router) {}
 
+  // Método para cerrar el menú y navegar a una página específica
+  navigateAndCloseMenu(route: string) {
+    this.menu.close(); // Cierra el menú
+    this.router.navigate([route]); // Navega a la página indicada
+  }
+
   cerrarSesion() {
     console.log('Sesión Cerrada');
-    localStorage.removeItem('usuario');  // Elimina el usuario del localStorage
-    this.menu.close('MyMenu');  // Cierra el menú
-    this.router.navigate(['/login']);  // Redirige a la página de login
-  }
-
-  // Métodos para navegar a las diferentes páginas
-  goToHome() {
-    this.router.navigate(['/home']);
-  }
-
-  goToLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  goToCategorias() {
-    this.router.navigate(['/categorias']);
+    localStorage.removeItem('usuario'); // Elimina el usuario del localStorage
+    this.navigateAndCloseMenu('/login'); // Cierra el menú y redirige a login
   }
 }

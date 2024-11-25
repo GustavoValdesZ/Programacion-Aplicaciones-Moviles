@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, MenuController } from '@ionic/angular';
-import { AuthServiceService } from '../services/auth-service.service'; // importar desde service/auth-service
+// import { AuthServiceService } from '../services/auth-service.service'; // Comentado temporalmente
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
     private navCTRL: NavController,
     private alertController: AlertController,
     private menu: MenuController,
-    private authService: AuthServiceService // Inyecta el servicio
+    // private authService: AuthServiceService // Comentado temporalmente
   ) {}
 
   ngOnInit() {
@@ -53,7 +53,10 @@ export class LoginPage implements OnInit {
 
     try {
       // Llama al servicio para verificar las credenciales
-      const loginExitoso = await this.authService.loginUser(this.usuario, this.contrasena);
+      // const loginExitoso = await this.authService.loginUser(this.usuario, this.contrasena); // Comentado temporalmente
+
+      // Simulación de éxito en el login (puedes quitar el comentario y volver a usar el servicio cuando esté listo)
+      const loginExitoso = true; // Eliminar esta línea cuando se retome el uso de AuthServiceService
 
       if (loginExitoso) {
         // Guarda los datos en el localStorage

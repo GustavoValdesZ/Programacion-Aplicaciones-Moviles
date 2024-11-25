@@ -8,6 +8,7 @@ import { LogoheaderComponent } from './logoheader/logoheader.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApiService } from './services/api.service';
+import { HttpClientModule } from '@angular/common/http'; 
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ApiService } from './services/api.service';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   // Agrega ApiService a los providers
   providers: [

@@ -18,29 +18,34 @@
   .personaje-item {
     display: flex;
     align-items: center;
-    background: transparent;
+    background: transparent !important; /* Asegura que el fondo sea transparente */
     padding: 15px;
     margin-top: 10px;
-  }
-  
-  .personaje-label {
-    color: #50C878;
-    margin-left: 10px; /* Espacio entre la imagen y el texto */
-  }
-  
-  .personaje-nombre h3 {
-    font-size: 25px !important; /* Tamaño de letra más pequeño */
-    margin: 0; /* Elimina márgenes */
-    font-weight: bolder;
+    border: none;  /* Elimina borde predeterminado */
+    box-shadow: none; /* Elimina sombras */
   }
   
   .personaje-thumbnail {
-    margin-right: 10px; /* Espacio entre imagen y texto */
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
   }
   
   .personaje-imagen {
     width: 80px;
-    height: 80px; 
+    height: 80px;
     object-fit: cover;
+    border-radius: 0; /* Elimina cualquier borde redondeado */
+    background: none !important; /* Elimina cualquier fondo detrás de la imagen */
+  }
+  
+  .personaje-label {
+    color: #50C878;
+  }
+  
+  .personaje-nombre h3 {
+    font-size: 25px !important;
+    margin: 0;
+    font-weight: bolder;
+    background: transparent !important; /* Elimina el fondo blanco */
+    color: #50C878; /* Color del texto */
   }
   
