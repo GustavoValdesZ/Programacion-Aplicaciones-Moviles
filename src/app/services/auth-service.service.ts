@@ -5,14 +5,13 @@ import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  public dbInstance!: SQLiteObject;
-  public dbReady: boolean = false;
+  public dbInstance!: SQLiteObject; // Instancia de la base de datos
 
   constructor(private sqlite: SQLite) {
     this.initializeDatabase();
   }
 
-  // Inicializar la base de datos
+  // Inicializa la base de datos
   async initializeDatabase() {
     try {
       this.dbInstance = await this.sqlite.create({
@@ -20,23 +19,21 @@ export class AuthServiceService {
         location: 'default',
       });
       await this.createTables();
-      await this.insertInitialData();
-      this.dbReady = true;
-      console.log('Base de datos inicializada');
+      await this.insertInitialData(); // Inserta datos iniciales al crear la base
     } catch (error) {
       console.error('Error inicializando la base de datos:', error);
     }
   }
 
-  // Crear las tablas necesarias
+  // Crea las tablas necesarias para la base de datos
   async createTables() {
     try {
-      // Tabla de usuarios: 'usuario' es la clave primaria
       const queryUsuarios = `
         CREATE TABLE IF NOT EXISTS usuarios (
-          usuario TEXT PRIMARY KEY,
+          id INTEGER PRIMARY KEY,
           nombre TEXT,
           apellido TEXT,
+          usuario TEXT UNIQUE,
           contrasena TEXT,
           nivel_educacion TEXT,
           fecha_nacimiento TEXT
@@ -44,7 +41,6 @@ export class AuthServiceService {
       `;
       await this.dbInstance.executeSql(queryUsuarios, []);
 
-      // Tabla de categorias
       const queryCategorias = `
         CREATE TABLE IF NOT EXISTS categorias (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -53,7 +49,6 @@ export class AuthServiceService {
       `;
       await this.dbInstance.executeSql(queryCategorias, []);
 
-      // Tabla de juegos
       const queryJuegos = `
         CREATE TABLE IF NOT EXISTS juegos (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,7 +63,7 @@ export class AuthServiceService {
     }
   }
 
-  // Insertar datos iniciales en la base de datos
+  // Inserta datos iniciales en las tablas de categorías y juegos
   async insertInitialData() {
     try {
       const categorias = ['Acción', 'Aventura', 'Deportes', 'Shooter', 'Terror'];
@@ -85,7 +80,7 @@ export class AuthServiceService {
         { nombre: 'Still Wakes the Deep', categoria_id: 5 },
       ];
 
-      // Insertar categorías
+      // Inserta categorías
       for (const categoria of categorias) {
         await this.dbInstance.executeSql(
           'INSERT OR IGNORE INTO categorias (nombre) VALUES (?)',
@@ -93,7 +88,7 @@ export class AuthServiceService {
         );
       }
 
-      // Insertar juegos
+      // Inserta juegos
       for (const juego of juegos) {
         await this.dbInstance.executeSql(
           'INSERT OR IGNORE INTO juegos (nombre, categoria_id) VALUES (?, ?)',
@@ -107,7 +102,7 @@ export class AuthServiceService {
     }
   }
 
-  // Registrar un nuevo usuario
+  // Registra un nuevo usuario en la base de datos
   async registerUser(
     nombre: string,
     apellido: string,
@@ -116,102 +111,45 @@ export class AuthServiceService {
     nivelEducacion: string,
     fechaNacimiento: string
   ): Promise<void> {
-    if (!this.dbReady) throw new Error('Base de datos no está lista');
-
     try {
-      // Insertar el nuevo usuario en la base de datos
       const query = `
-        INSERT INTO usuarios (usuario, nombre, apellido, contrasena, nivel_educacion, fecha_nacimiento) 
+        INSERT INTO usuarios (nombre, apellido, usuario, contrasena, nivel_educacion, fecha_nacimiento)
         VALUES (?, ?, ?, ?, ?, ?)
       `;
       await this.dbInstance.executeSql(query, [
-        usuario,
         nombre,
         apellido,
-        contrasena,
+        usuario,
+        contrasena, 
         nivelEducacion,
         fechaNacimiento,
       ]);
-      console.log('Usuario registrado exitosamente');
+      console.log('Usuario registrado correctamente');
     } catch (error) {
-      console.error('Error al registrar el usuario:', error);
-      throw error;
+      console.error('Error al registrar usuario:', error);
+      throw error; // Relanzar el error para manejarlo externamente
     }
   }
 
-  // API Interna: Obtener detalles de un usuario
-  async getUserDetails(usuario: string): Promise<any> {
-    if (!this.dbReady) throw new Error('Base de datos no está lista');
-
-    try {
-      const query = 'SELECT * FROM usuarios WHERE usuario = ?';
-      const result = await this.dbInstance.executeSql(query, [usuario]);
-      if (result.rows.length > 0) {
-        return result.rows.item(0);
-      } else {
-        throw new Error('Usuario no encontrado');
-      }
-    } catch (error) {
-      console.error('Error al obtener detalles del usuario:', error);
-      throw error;
-    }
-  }
-
-  // API Interna: Obtener todas las categorías
-  async getCategories(): Promise<any[]> {
-    if (!this.dbReady) throw new Error('Base de datos no está lista');
-
-    try {
-      const query = 'SELECT * FROM categorias';
-      const result = await this.dbInstance.executeSql(query, []);
-      const categories = [];
-      for (let i = 0; i < result.rows.length; i++) {
-        categories.push(result.rows.item(i));
-      }
-      return categories;
-    } catch (error) {
-      console.error('Error al obtener categorías:', error);
-      throw error;
-    }
-  }
-
-  // API Interna: Obtener juegos por categoría
-  async getGamesByCategory(categoriaId: number): Promise<any[]> {
-    if (!this.dbReady) throw new Error('Base de datos no está lista');
-
-    try {
-      const query = 'SELECT * FROM juegos WHERE categoria_id = ?';
-      const result = await this.dbInstance.executeSql(query, [categoriaId]);
-      const games = [];
-      for (let i = 0; i < result.rows.length; i++) {
-        games.push(result.rows.item(i));
-      }
-      return games;
-    } catch (error) {
-      console.error('Error al obtener juegos por categoría:', error);
-      throw error;
-    }
-  }
-
-  // Verificar las credenciales del usuario para login
+  // Verifica las credenciales del usuario para login
   async loginUser(usuario: string, contrasena: string): Promise<boolean> {
-    if (!this.dbReady) throw new Error('Base de datos no está lista');
-
     try {
-      // Buscar el usuario en la base de datos
-      const query = 'SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?';
+      const query = `
+        SELECT * FROM usuarios
+        WHERE usuario = ? AND contrasena = ?  // Asegúrate de que se use 'contrasena'
+      `;
       const result = await this.dbInstance.executeSql(query, [usuario, contrasena]);
 
       if (result.rows.length > 0) {
-        console.log('Login exitoso');
-        return true; // El usuario y la contraseña son correctos
+        console.log('Usuario autenticado:', result.rows.item(0));
+        return true; // Usuario encontrado
       } else {
-        console.log('Usuario o contraseña incorrectos');
-        return false; // El usuario o la contraseña son incorrectos
+        console.log('Credenciales incorrectas');
+        return false; // Usuario no encontrado
       }
     } catch (error) {
-      console.error('Error durante el login:', error);
-      throw error;
+      console.error('Error en la consulta de login:', error);
+      throw error; // Relanzar el error para manejarlo externamente
     }
   }
 }

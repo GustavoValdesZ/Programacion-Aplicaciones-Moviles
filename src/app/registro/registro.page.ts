@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlertController, MenuController } from '@ionic/angular';
-import { AuthServiceService } from '../services/auth-service.service'; // Importar el servicio de autenticación
+import { AuthServiceService } from '../services/auth-service.service'; // importar desde service/auth-service
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
-export class RegistroPage implements OnInit {
+export class RegistroPage {
   registro = {
     nombre: '',
     apellido: '',
@@ -26,21 +26,7 @@ export class RegistroPage implements OnInit {
     this.menu.close('myMenu');
   }
 
-  ngOnInit() {
-    // Verifica que la base de datos esté lista antes de permitir el registro
-    if (!this.authService.dbReady) {
-      console.error('La base de datos no está lista');
-      this.mostrarAlerta('La base de datos no está disponible, por favor intente más tarde.');
-    }
-  }
-
   async onSubmit() {
-    // Verifica si la base de datos está lista antes de proceder con el registro
-    if (!this.authService.dbReady) {
-      this.mostrarAlerta('La base de datos no está lista. Intente más tarde.');
-      return;
-    }
-
     // Validaciones
     if (!this.registro.nombre) {
       this.mostrarAlerta('El nombre no puede estar vacío.');
@@ -92,12 +78,9 @@ export class RegistroPage implements OnInit {
         buttons: ['OK'],
       });
       await alert.present();
-
-      // Limpia los campos del formulario después del registro
-      this.resetFormulario();
     } catch (error) {
       console.error('Error en el registro:', error);
-      this.mostrarAlerta('Ocurrió un error al registrar el usuario. Puede que el nombre de usuario ya exista.');
+      this.mostrarAlerta('Ocurrió un error al registrar el usuario.');
     }
   }
 
@@ -113,16 +96,5 @@ export class RegistroPage implements OnInit {
   private validarUsuario(usuario: string): boolean {
     const pattern = /^[a-zA-Z0-9]{3,8}$/;
     return pattern.test(usuario);
-  }
-
-  private resetFormulario() {
-    this.registro = {
-      nombre: '',
-      apellido: '',
-      usuario: '',
-      contrasena: '',
-      nivelEducacion: '',
-      fechaNacimiento: '',
-    };
   }
 }
