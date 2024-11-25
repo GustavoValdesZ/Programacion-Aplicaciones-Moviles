@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
+import { MenuController, AlertController } from '@ionic/angular'; // Importamos los controladores
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 export class AuthServiceService {
   public dbInstance!: SQLiteObject; // Instancia de la base de datos
 
-  constructor(private sqlite: SQLite) {
+  constructor(private sqlite: SQLite, private menuController: MenuController, private alertController: AlertController) {
     this.initializeDatabase();
   }
 
@@ -21,7 +22,7 @@ export class AuthServiceService {
       await this.createTables();
       await this.insertInitialData(); // Inserta datos iniciales al crear la base
     } catch (error) {
-      console.error('Error inicializando la base de datos:', error);
+      this.showAlert('Error', 'Error inicializando la base de datos');
     }
   }
 
@@ -59,7 +60,7 @@ export class AuthServiceService {
       `;
       await this.dbInstance.executeSql(queryJuegos, []);
     } catch (error) {
-      console.error('Error creando las tablas:', error);
+      this.showAlert('Error', 'Error creando las tablas');
     }
   }
 
@@ -96,9 +97,9 @@ export class AuthServiceService {
         );
       }
 
-      console.log('Datos iniciales insertados correctamente');
+      this.showAlert('Éxito', 'Datos iniciales insertados correctamente');
     } catch (error) {
-      console.error('Error al insertar datos iniciales:', error);
+      this.showAlert('Error', 'Error al insertar datos iniciales');
     }
   }
 
@@ -124,9 +125,9 @@ export class AuthServiceService {
         nivelEducacion,
         fechaNacimiento,
       ]);
-      console.log('Usuario registrado correctamente');
+      this.showAlert('Éxito', 'Usuario registrado correctamente');
     } catch (error) {
-      console.error('Error al registrar usuario:', error);
+      this.showAlert('Error', 'Error al registrar usuario');
       throw error; // Relanzar el error para manejarlo externamente
     }
   }
@@ -136,20 +137,35 @@ export class AuthServiceService {
     try {
       const query = `
         SELECT * FROM usuarios
-        WHERE usuario = ? AND contrasena = ?  // Asegúrate de que se use 'contrasena'
+        WHERE usuario = ? AND contrasena = ?
       `;
       const result = await this.dbInstance.executeSql(query, [usuario, contrasena]);
 
       if (result.rows.length > 0) {
-        console.log('Usuario autenticado:', result.rows.item(0));
         return true; // Usuario encontrado
       } else {
-        console.log('Credenciales incorrectas');
+        this.showAlert('Error', 'Credenciales incorrectas');
         return false; // Usuario no encontrado
       }
     } catch (error) {
-      console.error('Error en la consulta de login:', error);
+      this.showAlert('Error', 'Error en la consulta de login');
       throw error; // Relanzar el error para manejarlo externamente
     }
+  }
+
+  // Muestra una alerta con título y mensaje
+  private async showAlert(title: string, message: string) {
+    const alert = await this.alertController.create({
+      header: title,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  // Abre el menú
+  openMenu() {
+    this.menuController.open();
   }
 }

@@ -79,7 +79,6 @@ export class RegistroPage {
       });
       await alert.present();
     } catch (error) {
-      console.error('Error en el registro:', error);
       this.mostrarAlerta('Ocurrió un error al registrar el usuario.');
     }
   }
