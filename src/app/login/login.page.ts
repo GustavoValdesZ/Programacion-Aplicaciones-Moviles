@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, MenuController } from '@ionic/angular';
-import { AuthServiceService } from '../services/auth-service.service'; // importar desde service/auth-service
+import { AuthServiceService } from '../services/auth-service.service'; // Importa el servicio
 
 @Component({
   selector: 'app-login',
@@ -32,6 +32,12 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
+    // Verifica si la base de datos está lista antes de intentar el login
+    if (!this.authService.dbReady) {
+      this.mostrarAlerta('La base de datos no está lista. Intente más tarde.');
+      return;
+    }
+
     // Validar el usuario
     if (!this.validarUsuario(this.usuario)) {
       this.mostrarAlerta(
@@ -41,7 +47,7 @@ export class LoginPage implements OnInit {
     }
 
     // Validar la contraseña
-    if (!this.contrasena) { 
+    if (!this.contrasena) {
       this.mostrarAlerta('La contraseña no puede estar vacía.');
       return;
     }
