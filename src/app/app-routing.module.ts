@@ -86,7 +86,11 @@ const routes: Routes = [
   {
     path: 'stillwakes',
     loadChildren: () => import('./categorias/terror/stillwakes/stillwakes.module').then( m => m.StillwakesPageModule)
+  },  {
+    path: 'personajes',
+    loadChildren: () => import('./personajes/personajes.module').then( m => m.PersonajesPageModule)
   },
+
 
 
 

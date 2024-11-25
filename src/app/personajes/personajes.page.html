@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pokemones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="personajes-background">
+    <ul class="personajes-list">
+      <ion-item *ngFor="let pokemon of pokemons" class="personaje-item">
+        <ion-avatar slot="start" class="personaje-thumbnail">
+          <img [src]="pokemon.image" alt="{{ pokemon.name }}" class="personaje-imagen"/>
+        </ion-avatar>
+        <ion-label class="personaje-label">
+          <div class="personaje-nombre">
+            <h3>{{ pokemon.name | titlecase }}</h3>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ul>
+  </div>
+</ion-content>

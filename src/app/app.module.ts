@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LogoheaderComponent } from './logoheader/logoheader.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule, 
     BrowserAnimationsModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  // Agrega ApiService a los providers
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ApiService  // Aquí
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
