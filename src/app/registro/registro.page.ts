@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController, MenuController } from '@ionic/angular';
+import { AuthServiceService } from '../services/auth-service.service'; // importar desde service/auth-service
 
 @Component({
   selector: 'app-registro',
@@ -13,62 +14,74 @@ export class RegistroPage {
     usuario: '',
     contrasena: '',
     nivelEducacion: '',
-    fechaNacimiento: ''
+    fechaNacimiento: '',
   };
 
-  constructor(private alertCtrl: AlertController, private menu: MenuController) {
+  constructor(
+    private alertCtrl: AlertController,
+    private menu: MenuController,
+    private authService: AuthServiceService // Inyecta el servicio aquí
+  ) {
     // Cierra el menú al inicializar el componente
     this.menu.close('myMenu');
   }
 
   async onSubmit() {
-    // Validar el nombre
+    // Validaciones
     if (!this.registro.nombre) {
       this.mostrarAlerta('El nombre no puede estar vacío.');
       return;
     }
 
-    // Validar el apellido
     if (!this.registro.apellido) {
       this.mostrarAlerta('El apellido no puede estar vacío.');
       return;
     }
 
-    // Validar el usuario
     if (!this.validarUsuario(this.registro.usuario)) {
-      this.mostrarAlerta('El usuario debe tener entre 3 y 8 caracteres alfanuméricos.');
+      this.mostrarAlerta(
+        'El usuario debe tener entre 3 y 8 caracteres alfanuméricos.'
+      );
       return;
     }
 
-    // Validar la contraseña
     if (!this.registro.contrasena) {
       this.mostrarAlerta('La contraseña no puede estar vacía.');
       return;
     }
 
-    // Validar nivel de educación
     if (!this.registro.nivelEducacion) {
       this.mostrarAlerta('El nivel de educación no puede estar vacío.');
       return;
     }
 
-    // Validar la fecha de nacimiento
     if (!this.registro.fechaNacimiento) {
       this.mostrarAlerta('La fecha de nacimiento no puede estar vacía.');
       return;
     }
 
-    // Si todas las validaciones son exitosas
-    const alert = await this.alertCtrl.create({
-      header: 'Registro Exitoso',
-      message: `Nombre: ${this.registro.nombre}
-                 Apellido: ${this.registro.apellido}
-                 Usuario: ${this.registro.usuario}
-                 Nivel de Educación: ${this.registro.nivelEducacion}
-                 Fecha de Nacimiento: ${this.registro.fechaNacimiento}`,
-      buttons: ['OK']
-    });
-    await alert.present();
+    // Llama al servicio para registrar al usuario
+    try {
+      await this.authService.registerUser(
+        this.registro.nombre,
+        this.registro.apellido,
+        this.registro.usuario,
+        this.registro.contrasena,
+        this.registro.nivelEducacion,
+        this.registro.fechaNacimiento
+      );
+
+      // Muestra mensaje de éxito
+      const alert = await this.alertCtrl.create({
+        header: 'Registro Exitoso',
+        message: `El usuario ${this.registro.usuario} ha sido registrado con éxito.`,
+        buttons: ['OK'],
+      });
+      await alert.present();
+    } catch (error) {
+      console.error('Error en el registro:', error);
+      this.mostrarAlerta('Ocurrió un error al registrar el usuario.');
+    }
   }
 
   async mostrarAlerta(mensaje: string) {

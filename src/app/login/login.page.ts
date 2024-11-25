@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
-import { MenuController } from '@ionic/angular';
+import { NavController, AlertController, MenuController } from '@ionic/angular';
+import { AuthServiceService } from '../services/auth-service.service'; // importar desde service/auth-service
 
 @Component({
   selector: 'app-login',
@@ -10,12 +9,13 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   usuario: string = '';
-  password: string = '';
+  contrasena: string = '';
 
   constructor(
     private navCTRL: NavController,
     private alertController: AlertController,
-    private menu: MenuController
+    private menu: MenuController,
+    private authService: AuthServiceService // Inyecta el servicio
   ) {}
 
   ngOnInit() {
@@ -31,33 +31,45 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  login() {
+  async login() {
     // Validar el usuario
     if (!this.validarUsuario(this.usuario)) {
-      this.mostrarAlerta('El usuario debe tener entre 3 y 8 caracteres alfanuméricos.');
+      this.mostrarAlerta(
+        'El usuario debe tener entre 3 y 8 caracteres alfanuméricos.'
+      );
       return;
     }
 
     // Validar la contraseña
-    if (!this.password) {
+    if (!this.contrasena) { 
       this.mostrarAlerta('La contraseña no puede estar vacía.');
       return;
     }
 
-    if (!this.validarPassword(this.password)) {
+    if (!this.validarPassword(this.contrasena)) {
       this.mostrarAlerta('La contraseña debe ser de 4 dígitos numéricos.');
       return;
     }
 
-    this.menu.close(); // Cierra el menú antes de navegar
+    try {
+      // Llama al servicio para verificar las credenciales
+      const loginExitoso = await this.authService.loginUser(this.usuario, this.contrasena);
 
-    // Si las validaciones son exitosas, navegar a la página de inicio
-    this.navCTRL.navigateForward(['/home'], {
-      queryParams: {
-        usuario: this.usuario,
-        password: this.password,
-      },
-    });
+      if (loginExitoso) {
+        // Navegar a la página de inicio si el login es exitoso
+        this.menu.close();
+        this.navCTRL.navigateForward(['/home'], {
+          queryParams: {
+            usuario: this.usuario,
+          },
+        });
+      } else {
+        this.mostrarAlerta('Usuario o contraseña incorrectos.');
+      }
+    } catch (error) {
+      console.error('Error durante el login:', error);
+      this.mostrarAlerta('Ocurrió un error al iniciar sesión. Inténtalo de nuevo.');
+    }
   }
 
   // Método para ir a la página de registro
@@ -71,8 +83,8 @@ export class LoginPage implements OnInit {
     return pattern.test(usuario);
   }
 
-  private validarPassword(password: string): boolean {
+  private validarPassword(contrasena: string): boolean {
     const pattern = /^\d{4}$/; // Debe ser un número de 4 dígitos
-    return pattern.test(password);
+    return pattern.test(contrasena);
   }
 }
