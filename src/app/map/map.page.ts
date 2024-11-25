@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Geolocation, PermissionStatus } from '@capacitor/geolocation';
+import { Geolocation, PermissionStatus } from '@capacitor/geolocation'; 
 
 @Component({
   selector: 'app-map',

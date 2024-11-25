@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';  
 
 @Component({
   selector: 'app-camera',
-  templateUrl: './camera.page.html',
-  styleUrls: ['./camera.page.scss'],
+  templateUrl: './camara.page.html', 
+  styleUrls: ['./camara.page.scss'],  
 })
-export class CameraPage {
+export class CameraPage {  
   capturedImage: string | undefined;  // Variable para almacenar la imagen capturada
 
   constructor() {}
